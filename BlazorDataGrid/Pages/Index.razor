@@ -1,0 +1,71 @@
+﻿@page "/"
+@using Blazored.Menu
+
+<h3>Blazored Menu Demo</h3>
+
+<div class="col-md-2">
+    <h3>Menu - 1:</h3>
+    <BlazoredMenu>
+        <BlazoredMenuItem>
+            <NavLink href="/" Match="NavLinkMatch.All">Home</NavLink>
+        </BlazoredMenuItem>
+        <BlazoredSubMenu Header="Sub Menu">
+            <HeaderTemplate>
+                Sub Menu
+            </HeaderTemplate>
+            <MenuTemplate>
+                <BlazoredMenuItem>
+                    <NavLink href="counter">Counter</NavLink>
+                </BlazoredMenuItem>
+                <BlazoredMenuItem IsVisible="true">
+                    <NavLink href="fetchdata">Fetch Data</NavLink>
+                </BlazoredMenuItem>
+            </MenuTemplate>
+        </BlazoredSubMenu>
+    </BlazoredMenu>
+
+    <h3>Menu - 2:</h3>
+    <BlazoredMenu MenuBuilder="@menuBuilder"></BlazoredMenu>
+</div>
+
+<h1>Blazor Date Range Picker Demo</h1>
+<div class="col-3">
+    <DateRangePicker OnRangeSelect="OnRangeSelect"></DateRangePicker>
+    <br />
+    <DateRangePicker placeholder="Select dates..." OnRangeSelect="OnRangeSelect"></DateRangePicker>
+    <br />
+    <DateRangePicker MinDate="DateTimeOffset.Now.AddYears(-10)" MaxDate="DateTimeOffset.Now"></DateRangePicker>
+    <br />
+    <DateRangePicker @bind-StartDate="StartDate" @bind-EndDate="EndDate"></DateRangePicker>
+    <br />
+    <DateRangePicker OnRangeSelect="OnRangeSelect">
+        <PickerTemplate>
+            <div id="@context.ParentId" @onclick="context.Toggle" style="background:#fff;cursor:pointer;padding:5px 10px; width:250px; border:1px solid #ccc;">
+                <i class="oi oi-calendar"></i>&nbsp;
+                <span>@context.FormattedRange @(string.IsNullOrEmpty(context.FormattedRange)?"Choose dates...":"")</span>
+                <i class="oi oi-chevron-bottom float-right"></i>
+
+            </div>
+        </PickerTemplate>
+    </DateRangePicker>
+</div>
+
+@code{
+    MenuBuilder menuBuilder = new MenuBuilder();
+
+    protected override async Task OnInitializedAsync()
+    {
+        menuBuilder.AddItem(1, "Home", "/")
+            .AddSubMenu(2, "Sub Menu", new MenuBuilder()
+            .AddItem(1, "Counter", "counter")
+            .AddItem(2, "FetchData", "fetchdata"));
+    }
+
+    DateTimeOffset? StartDate { get; set; } = DateTime.Today.AddMonths(-1);
+    DateTimeOffset? EndDate { get; set; } = DateTime.Today.AddDays(1).AddTicks(-1);
+
+    public void OnRangeSelect(DateRange range)
+    {
+
+    }
+}

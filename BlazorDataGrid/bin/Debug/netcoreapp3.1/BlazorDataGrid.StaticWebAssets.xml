@@ -1,0 +1,7 @@
+﻿<StaticWebAssets Version="1.0">
+  <ContentRoot BasePath="_content/BlazorDateRangePicker" Path="C:\Users\kouge\.nuget\packages\blazordaterangepicker\2.6.0\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Blazored.Menu" Path="C:\Users\kouge\.nuget\packages\blazored.menu\2.0.5\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Blazored.Toast" Path="C:\Users\kouge\.nuget\packages\blazored.toast\3.1.2\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Blazorise" Path="C:\Users\kouge\.nuget\packages\blazorise\0.9.0.3\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Blazorise.Bootstrap" Path="C:\Users\kouge\.nuget\packages\blazorise.bootstrap\0.9.0.3\build\..\staticwebassets\" />
+</StaticWebAssets>

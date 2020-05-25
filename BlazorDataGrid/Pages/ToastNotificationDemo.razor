@@ -1,0 +1,13 @@
+﻿@page "/toast"
+@inject IToastService toastService
+<h3>Toast Notification Demo</h3>
+
+<button class="btn btn-info" @onclick="@(() => toastService.ShowInfo("Welcome to Blazor-info"))">Info Toast</button>
+<button class="btn btn-success" @onclick="@(() => toastService.ShowSuccess("Welcome to Blazor-success"))">Success Toast</button>
+<button class="btn btn-warning" @onclick="@(() => toastService.ShowWarning("Welcome to Blazor-warning"))">Warning Toast</button>
+<button class="btn btn-danger" @onclick="@(() => toastService.ShowError("Welcome to Blazor-Error"))">Error Toast</button>
+
+
+@code {
+
+}
